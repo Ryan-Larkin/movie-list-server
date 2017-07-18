@@ -8,19 +8,16 @@ module.exports = () => {
     Movie.find( {}, (err, movies) => {
       if(err) throw err;
 
-      let movieMap = {};// why does this have to be an object?
-
-      movies.forEach(movie => {
-        movieMap[movie._id] = movie.title;
-      });
-
-      res.send(movieMap);
+      // This sends an array of movie objects
+      res.send(movies);
     });
   });
 
   moviesController.post('/', (req, res) => {
     let newM = new Movie({
-      title : req.body.title
+      title    : req.body.title,
+      poster   : req.body.poster,
+      overview : req.body.overview
     });
 
     newM.save(function(err) {
