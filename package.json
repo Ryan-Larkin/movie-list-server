@@ -1,0 +1,19 @@
+{
+  "name": "movie-list-server",
+  "version": "1.0.0",
+  "description": "Server for movie list website",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.3",
+    "morgan": "^1.8.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Ryan Larkin <ryan.r.larkin@gmail.com>",
+  "license": "ISC"
+}
