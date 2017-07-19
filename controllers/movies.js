@@ -5,7 +5,7 @@ module.exports = () => {
   const moviesController = express.Router();
 
   moviesController.get('/', (req, res) => {
-    Movie.find( {}, (err, movies) => {
+    Movie.find({}).sort({title:1}).exec((err, movies) => {
       if(err) throw err;
 
       // This sends an array of movie objects
@@ -20,12 +20,19 @@ module.exports = () => {
       overview : req.body.overview
     });
 
-    newM.save(function(err) {
-      if (err) throw err;
+    Movie.find({ title: req.body.title}).exec((err, movieFound) => {
+      if (movieFound && movieFound.length > 0) {
+        res.send({ wasFound : true, title : req.body.title});
+      }
+      else {
+        newM.save(function(err) {
+          if (err) throw err;
 
-      console.log('Movie saved successfully.');
-    })
-    .then(data => res.send(data));
+          console.log('Movie saved successfully.');
+        })
+        .then(data => res.send(data));
+      }
+    });
   });
 
   // eventually make this so only I can delete, add middleware for it, not essential right now
