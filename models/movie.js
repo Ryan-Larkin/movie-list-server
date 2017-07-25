@@ -5,8 +5,9 @@ const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 const movieSchema = new Schema({
+  apiID    : { type : Number, required : true, unique : true },
   title    : { type : String, required : true },
-  poster   : { type : String, required : true },
+  poster   : { type : String },
   overview : { type : String, required : true }
 });
 

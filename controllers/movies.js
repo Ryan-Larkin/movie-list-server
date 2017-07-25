@@ -15,12 +15,13 @@ module.exports = () => {
 
   moviesController.post('/', (req, res) => {
     let newM = new Movie({
+      apiID    : req.body.apiID,
       title    : req.body.title,
       poster   : req.body.poster,
       overview : req.body.overview
     });
 
-    Movie.find({ title: req.body.title}).exec((err, movieFound) => {
+    Movie.find({ apiID: req.body.apiID }).exec((err, movieFound) => {
       if (movieFound && movieFound.length > 0) {
         res.send({ wasFound : true, title : req.body.title});
       }
