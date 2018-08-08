@@ -9,7 +9,7 @@ const moviesController = require('./controllers/movies.js');
 
 mongoose.connect(configDB.url);
 
-app.use(cors());
+app.options('*', cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use('/movies', moviesController());
