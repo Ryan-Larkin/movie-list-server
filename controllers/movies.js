@@ -1,6 +1,5 @@
 const express  = require('express');
 const Movie = require('../models/movie');
-const cors = require('cors');
 
 module.exports = () => {
   const moviesController = express.Router();
@@ -38,7 +37,7 @@ module.exports = () => {
   });
 
   // eventually make this so only I can delete, add middleware for it, not essential right now
-  moviesController.delete('/:id', cors(), (req, res) => {
+  moviesController.delete('/:id', (req, res) => {
     Movie.findByIdAndRemove(req.params.id, function(err) {
       if (err) { console.error(err); throw err; }
 
