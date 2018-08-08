@@ -13,7 +13,7 @@ app.options('*', cors());
 app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use('/movies', cors(), moviesController());
+app.use('/movies', moviesController());
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
