@@ -1,7 +1,6 @@
 const app        = require('express')();
 const mongoose   = require('mongoose');
 const cors       = require('cors');
-const corser     = require('corser');
 const bodyParser = require('body-parser');
 const morgan     = require('morgan');
 
@@ -10,9 +9,8 @@ const moviesController = require('./controllers/movies.js');
 
 mongoose.connect(configDB.url);
 
-app.use(cors());
 app.options('*', cors());
-app.use(corser.create());
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use('/movies', moviesController());
