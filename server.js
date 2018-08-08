@@ -10,9 +10,10 @@ const moviesController = require('./controllers/movies.js');
 mongoose.connect(configDB.url);
 
 app.options('*', cors());
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use('/movies', moviesController());
+app.use('/movies', cors(), moviesController());
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
