@@ -38,6 +38,7 @@ module.exports = () => {
 
   // eventually make this so only I can delete, add middleware for it, not essential right now
   moviesController.delete('/:id', (req, res) => {
+	  console.log(req.params.id, typeof req.params.id);
     Movie.findByIdAndRemove(req.params.id, function(err) {
       if (err) { console.error(err); throw err; }
 
